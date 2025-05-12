@@ -35,7 +35,7 @@ const Blogs = () => {
         </div>
 
         {/* Cards */}
-        <div className="flex flex-wrap gap-6 justify-between">
+        <div className="flex flex-wrap gap-6 justify-center">
   {menuItems2.map((item) => (
     <Card key={item.id} className="border-none shadow-none bg-transparent w-80">
       <div className="relative overflow-hidden rounded-lg border shadow-md group">

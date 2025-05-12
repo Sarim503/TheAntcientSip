@@ -29,7 +29,7 @@ const Footerpage = () => {
           placeholder="Email address"
           className="px-3 py-2 rounded-l bg-white text-black outline-none"
         />
-        <button className="bg-black text-white px-4 py-2 rounded-r hover:bg-gray-800">
+        <button className="bg-black text-white px-2 py-2 rounded-r hover:bg-gray-800">
           Subscribe
         </button>
       </div>
