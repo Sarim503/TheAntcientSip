@@ -1,11 +1,8 @@
 "use client";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  addToCart,
-  increaseQuantity,
-  decreaseQuantity,
-} from "../../store/cartSlice";
+import { useState } from "react";
+import { addToCart, removeFromCart } from "../../store/cartSlice";
 
 const ZalmiMealDealCard = () => {
   const dispatch = useDispatch();
@@ -36,11 +33,38 @@ const ZalmiMealDealCard = () => {
     },
   ];
 
+  // Local quantity state for all items
+  const [quantities, setQuantities] = useState({});
+
+  const handleQuantityChange = (id, change) => {
+    setQuantities((prev) => {
+      const newQuantity = (prev[id] || 0) + change;
+      return {
+        ...prev,
+        [id]: newQuantity < 0 ? 0 : newQuantity,
+      };
+    });
+  };
+
+  const handleAddToCart = (item) => {
+    const quantity = quantities[item.id] || 0;
+
+    if (quantity === 0) {
+      alert("Please select at least 1 item before adding to cart.");
+      return;
+    }
+
+    dispatch(addToCart({ ...item, quantity }));
+  };
+
+  const handleRemoveFromCart = (itemId) => {
+    dispatch(removeFromCart({ id: itemId }));
+  };
+
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 p-4">
       {mealDeals.map((item) => {
-        const itemInCart = cartItems.find((cartItem) => cartItem.id === item.id);
-        const quantity = itemInCart ? itemInCart.quantity : 0;
+        const quantity = quantities[item.id] || 0;
 
         return (
           <div
@@ -56,13 +80,9 @@ const ZalmiMealDealCard = () => {
               />
             </div>
 
-            {/* Title */}
             <h2 className="text-lg font-bold">{item.name}</h2>
-
-            {/* Description */}
             <p className="text-sm text-gray-700">{item.description}</p>
 
-            {/* Price Section */}
             <div className="flex items-center justify-between">
               <div className="text-red-600 text-xl font-bold">Rs. {item.price}</div>
               <div className="bg-orange-100 text-orange-600 text-xs px-2 py-1 rounded-full">
@@ -70,17 +90,17 @@ const ZalmiMealDealCard = () => {
               </div>
             </div>
 
-            {/* Quantity Control */}
+            {/* Quantity Control - Local State */}
             <div className="flex items-center justify-between">
               <button
-                onClick={() => dispatch(decreaseQuantity(item.id))}
+                onClick={() => handleQuantityChange(item.id, -1)}
                 className="bg-gray-300 text-gray-700 px-4 py-2 rounded-lg"
               >
                 -
               </button>
               <span className="text-lg font-bold">{quantity}</span>
               <button
-                onClick={() => dispatch(increaseQuantity(item.id))}
+                onClick={() => handleQuantityChange(item.id, 1)}
                 className="bg-gray-300 text-gray-700 px-4 py-2 rounded-lg"
               >
                 +
@@ -88,13 +108,22 @@ const ZalmiMealDealCard = () => {
             </div>
 
             {/* Add to Cart Button */}
-        <button
-  onClick={() => dispatch(addToCart({ ...item, quantity }))} // quantity ko pass kar rahe ho
-  className="w-full bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-lg"
->
-  Add to Cart
-</button>
+            <button
+              onClick={() => handleAddToCart(item)}
+              className="w-full bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-lg"
+            >
+              Add to Cart
+            </button>
 
+            {/* Remove from Cart Button (only if item is in cart) */}
+            {cartItems.find((cartItem) => cartItem.id === item.id) && (
+              <button
+                onClick={() => handleRemoveFromCart(item.id)}
+                className="w-full bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-lg mt-2"
+              >
+                Remove from Cart
+              </button>
+            )}
           </div>
         );
       })}

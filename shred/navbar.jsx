@@ -1,6 +1,8 @@
 "use client"
 
 import { UtensilsCrossed } from "lucide-react"
+import { useSelector } from 'react-redux';
+import { selectCartItemCount } from '../store/cartSlice';
 
 import {
   Sheet,
@@ -18,6 +20,8 @@ import {
 import Link from "next/link"
 
 export default function Navbar() {
+  const itemCount = useSelector(selectCartItemCount);
+    console.log("Total count in cart:", itemCount);
   return (
     <div className="w-full border-b shadow-sm bg-white px-6 py-4 flex items-center justify-between">
       
@@ -50,11 +54,18 @@ export default function Navbar() {
 
       
 
-      {/* Right: Cart + Login */}
+ 
       <div className="flex items-center gap-4">
-        <Link href="/cart" className="hover:text-blue-600 transition">
-          <ShoppingCart className="w-5 h-5" />
-        </Link>
+        <Link href="/cart" className="hover:text-blue-600 transition relative">
+        <ShoppingCart className="w-10 h-10" />
+        
+     
+        {itemCount > 0 && (
+          <span className="absolute top-0 right-0 bg-red-500 text-white rounded-full px-1  text-xs">
+            {itemCount}
+          </span>
+        )}
+      </Link>
         <Link
           href="/login"
           className="bg-blue-600 hover:bg-blue-700 text-white text-sm px-4 py-2 rounded-md transition"
