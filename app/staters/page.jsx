@@ -40,7 +40,7 @@ const ZalmiMealDealCard = () => {
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 p-4">
       {mealDeals.map((item) => {
         const itemInCart = cartItems.find((cartItem) => cartItem.id === item.id);
-        const quantity = itemInCart ? itemInCart.quantity : 1;
+        const quantity = itemInCart ? itemInCart.quantity : 0;
 
         return (
           <div
@@ -88,14 +88,13 @@ const ZalmiMealDealCard = () => {
             </div>
 
             {/* Add to Cart Button */}
-            <button
-              onClick={() =>
-                dispatch(addToCart({ ...item, quantity }))
-              }
-              className="w-full bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-lg"
-            >
-              Add to Cart
-            </button>
+        <button
+  onClick={() => dispatch(addToCart({ ...item, quantity }))} // quantity ko pass kar rahe ho
+  className="w-full bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-lg"
+>
+  Add to Cart
+</button>
+
           </div>
         );
       })}
