@@ -1,15 +1,52 @@
-"use client";
+"use client"; 
 import { useSelector } from "react-redux";
 import { selectCartItems } from "../../store/cartSlice";
 import Link from "next/link";
+import { useAuth } from "../../firebase/AuthContext";
+import { useRouter } from 'next/navigation';
+import { useState, useEffect } from "react";
+import { saveOrder } from "../../firebase/orderService"; 
 
 const Cart = () => {
+  const router = useRouter();
+  const { user } = useAuth();  // User info
+  const [isMounted, setIsMounted] = useState(false);
+
   const cartItems = useSelector(selectCartItems);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  const handleCheckout = async () => {
+    if (!user) {
+      router.push('/login');  // Redirect to login if not logged in
+    } else {
+      const orderDetails = {
+        items: cartItems,
+        totalAmount: cartItems.reduce((total, item) => total + item.price * item.quantity, 0),
+      };
+
+      try {
+        await saveOrder(orderDetails);  // Save order to Firebase
+        console.log("Order saved successfully");
+        router.push('/thank-you');  // Redirect to Thank You page after saving order
+      } catch (error) {
+        console.error("Error saving order: ", error);
+      }
+    }
+  };
+
+  if (!isMounted) {
+    return null;
+  }
 
   return (
     <div className="p-4">
       <h1 className="text-2xl font-bold mb-4">Your Cart</h1>
 
+      {user && <p className="text-xl">Hello, {user.displayName}</p>} {/* Show user name if logged in */}
+      
       {cartItems.length === 0 ? (
         <p>
           Your cart is empty. <Link href="/">Go back to shopping</Link>
@@ -31,17 +68,11 @@ const Cart = () => {
             </div>
           ))}
 
-          {/* Display total price */}
-          <div className="mt-6 text-xl font-bold border-t pt-4">
-            Total: $
-            {cartItems
-              .reduce((total, item) => total + item.price * item.quantity, 0)
-              .toFixed(2)}
-          </div>
-
-          {/* Checkout button */}
           <div className="mt-4">
-            <button className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg transition">
+            <button
+              onClick={handleCheckout}
+              className="w-full bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-lg transition"
+            >
               Proceed to Checkout
             </button>
           </div>

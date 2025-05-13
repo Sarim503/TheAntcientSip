@@ -19,13 +19,13 @@ import {
 
 import Link from "next/link"
 
-export default function Navbar() {
+export default function Navbar({ user }) {
   const itemCount = useSelector(selectCartItemCount);
     console.log("Total count in cart:", itemCount);
   return (
     <div className="w-full border-b shadow-sm bg-white px-6 py-4 flex items-center justify-between">
       
-      {/* Left: Hamburger on Mobile */}
+    
       <div className="flex flex-row space-x-3">
         <Sheet>
           <SheetTrigger asChild>
@@ -73,6 +73,12 @@ export default function Navbar() {
           <LogIn className="inline-block mr-2 w-4 h-4" />
           Login
         </Link>
+      <ul>
+  {user && user.displayName ? (
+    <li>Welcome, {user.displayName}</li>
+  ) : null}
+</ul>
+
       </div>
     </div>
   )

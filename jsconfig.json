@@ -13,15 +13,23 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
     "paths": {
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/layout.jsx", "app/page.jsx", "shred/Blogs.jsx", "shred/Carousel.jsx", "shred/CarouselMenu.jsx", "shred/Footerpage.jsx", "shred/SubscribeMenu.jsx", "shred/navbar.jsx"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.js",
+    "**/*.jsx",
+    ".next/types/**/*.ts",
+    "app/layout.jsx",
+    "app/page.jsx",
+    "shred/Blogs.jsx",
+    "shred/Carousel.jsx",
+    "shred/CarouselMenu.jsx",
+    "shred/Footerpage.jsx",
+    "shred/SubscribeMenu.jsx",
+    "shred/navbar.jsx"
+  ],
   "exclude": ["node_modules"]
 }
