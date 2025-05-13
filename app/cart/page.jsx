@@ -1,6 +1,6 @@
 "use client"; 
-import { useSelector } from "react-redux";
-import { selectCartItems } from "../../store/cartSlice";
+import { useSelector, useDispatch } from "react-redux";
+import { selectCartItems, resetCart } from "../../store/cartSlice";  // Import resetCart action
 import Link from "next/link";
 import { useAuth } from "../../firebase/AuthContext";
 import { useRouter } from 'next/navigation';
@@ -10,6 +10,7 @@ import { saveOrder } from "../../firebase/orderService";
 const Cart = () => {
   const router = useRouter();
   const { user } = useAuth();  // User info
+  const dispatch = useDispatch();  // Initialize dispatch
   const [isMounted, setIsMounted] = useState(false);
 
   const cartItems = useSelector(selectCartItems);
@@ -30,7 +31,10 @@ const Cart = () => {
       try {
         await saveOrder(orderDetails);  // Save order to Firebase
         console.log("Order saved successfully");
-        router.push('/thank-you');  // Redirect to Thank You page after saving order
+
+        dispatch(resetCart());  // Reset the cart after successful order
+
+        router.push('/thank-you');  // Redirect to Thank You page
       } catch (error) {
         console.error("Error saving order: ", error);
       }
@@ -67,6 +71,10 @@ const Cart = () => {
               </div>
             </div>
           ))}
+<div className="mt-4 text-right text-xl font-semibold">
+  Total Amount: $
+  {cartItems.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2)}
+</div>
 
           <div className="mt-4">
             <button

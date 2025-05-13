@@ -38,7 +38,9 @@ decreaseQuantity: (state, action) => {
     item.quantity -= 1;  
   }
 },
-
+  resetCart: (state) => {
+      state.items = [];  // Reset the cart items to an empty array
+    },
 
     
   },
@@ -46,5 +48,5 @@ decreaseQuantity: (state, action) => {
 export const selectCartItemCount = (state) => state.cart.items.reduce((total, item) => total + item.quantity, 0);
 
 export const selectCartItems = (state) => state.cart.items;
-export const { addToCart, removeFromCart, increaseQuantity, decreaseQuantity } = cartSlice.actions;
+export const { addToCart, removeFromCart, increaseQuantity, decreaseQuantity,resetCart  } = cartSlice.actions;
 export default cartSlice.reducer;
