@@ -15,21 +15,21 @@ const ZalmiMealDealCard = () => {
       price: 2500,
       image: "/images/burger.jpg",
       description:
-        "1 Regular Crown Crust Pizza, 1 Fettuccine Alfredo Pasta, 1 Liter Cold Drink",
+        "yummy",
     },
     {
       id: "deluxe-meal",
       name: "Deluxe Meal Deal",
       price: 3000,
       image: "/images/burger.jpg",
-      description: "1 Large Pizza, 1 Pasta, 1 Cold Drink",
+      description: "yummy",
     },
     {
       id: "family-meal",
       name: "Family Meal Deal",
       price: 5000,
       image: "/images/burger.jpg",
-      description: "2 Regular Pizzas, 2 Pasta, 2 Cold Drinks",
+      description: "yummy",
     },
   ];
 

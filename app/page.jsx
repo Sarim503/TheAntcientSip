@@ -3,6 +3,7 @@ import Carsel from "@/shred/Carousel";
 import CarouselMenu from "@/shred/CarouselMenu";
 import SubscribeMenu from "@/shred/SubscribeMenu";
 import Footerpage from "@/shred/Footerpage";
+import Xshape from "@/shred/xshape";
 
 
 export default function Home() {
@@ -12,6 +13,7 @@ export default function Home() {
     <Blogs />
     <SubscribeMenu />
     <Footerpage />
+    
   </div>;
 }
   
