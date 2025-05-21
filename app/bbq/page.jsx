@@ -10,51 +10,51 @@ const ZalmiMealDealCard = () => {
 
   const mealDeals = [
     {
-      id: "BBQ WINGS",
-      name: "BBQ WINGS",
-      price: 449,
+      id: "BBQ CHICKEN TIKKA",
+      name: "BBQ CHICKEN TIKKA",
+      price: 449 ,
+      image: "/images/burger.jpg",
+      description: "(Leg/Chest)",
+    },
+    {
+      id: "CHICKEN TIKKA BOTTI ",
+      name: "CHICKEN TIKKA BOTTI ",
+      price:1199 ,
+      image: "/images/burger.jpg",
+       description: "(12Pcs)",
+    },
+    {
+      id: " CHICKEN MALAI BOTTI",
+      name: " CHICKEN MALAI BOTTI",
+      price: 1299 ,
+      image: "/images/burger.jpg",
+  description: "(12Pcs)",
+    },
+    {
+      id: " CHICKEN ACHARI BOIT",
+      name: " CHICKEN ACHARI BOIT",
+      price: 1199 ,
+      image: "/images/burger.jpg",
+        description: " (12Pcs)",
+    },
+    {
+      id: "CHICKEN SEEKH KABAB",
+      name: "CHICKEN SEEKH KABAB",
+      price: 1099 ,
       image: "/images/burger.jpg",
       description: "6(Pcs)",
     },
     {
-      id: "FRIEND WINGS",
-      name: "FRIEND WINGS",
-      price:399,
-      image: "/images/burger.jpg",
-       description: "6(Pcs)",
-    },
-    {
-      id: "CHICKEN NUGGETS",
-      name: "CHICKEN NUGGETS",
-      price: 349,
-      image: "/images/burger.jpg",
-  description: "6(Pcs)",
-    },
-    {
-      id: "CHICKEN NUGGETS2",
-      name: "CHICKEN NUGGETS",
-      price: 649,
-      image: "/images/burger.jpg",
-        description: "12(Pcs)",
-    },
-    {
-      id: "HONEY WINGS",
-      name: "HONEY WINGS",
-      price: 549,
+      id: "BEEF KABAB ",
+      name: "BEEF KABAB ",
+      price: 1199 ,
       image: "/images/burger.jpg",
       description: "6(Pcs)",
     },
     {
-      id: "CHILLI WINGS",
-      name: "CHILLI WINGS",
-      price: 479,
-      image: "/images/burger.jpg",
-      description: "6(Pcs)",
-    },
-    {
-      id: "BUFFALO WINGS",
-      name: "BUFFALO WINGS",
-      price: 489,
+      id: "CHICKEN RESHMI KABAB",
+      name: "CHICKEN RESHMI KABAB",
+      price: 1199 ,
       image: "/images/burger.jpg",
       description: "6(Pcs)",
     },
@@ -88,7 +88,7 @@ const ZalmiMealDealCard = () => {
   return (
     <>
       <h1 className="text-center text-4xl sm:text-5xl font-extrabold text-orange-700 mb-8 drop-shadow-md">
-        🍔 Zalmi Starters
+        🍔 Zalmi BBQ
       </h1>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 p-6 bg-gradient-to-br from-yellow-100 via-orange-100 to-red-100">

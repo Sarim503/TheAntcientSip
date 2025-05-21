@@ -10,54 +10,43 @@ const ZalmiMealDealCard = () => {
 
   const mealDeals = [
     {
-      id: "BBQ WINGS",
-      name: "BBQ WINGS",
-      price: 449,
+      id: " BOOM BOOM BURGER",
+      name: "BOOM BOOM BURGER",
+      price: 499,
       image: "/images/burger.jpg",
-      description: "6(Pcs)",
     },
     {
-      id: "FRIEND WINGS",
-      name: "FRIEND WINGS",
-      price:399,
-      image: "/images/burger.jpg",
-       description: "6(Pcs)",
-    },
-    {
-      id: "CHICKEN NUGGETS",
-      name: "CHICKEN NUGGETS",
+      id: "CHICKEN PATTY BURGER",
+      name: "CHICKEN PATTY BURGER",
       price: 349,
       image: "/images/burger.jpg",
-  description: "6(Pcs)",
+      description: "6(Pcs)",
     },
     {
-      id: "CHICKEN NUGGETS2",
-      name: "CHICKEN NUGGETS",
+      id: "DOUBLE DECKER BURGER",
+      name: "DOUBLE DECKER BURGER ",
       price: 649,
       image: "/images/burger.jpg",
-        description: "12(Pcs)",
     },
     {
-      id: "HONEY WINGS",
-      name: "HONEY WINGS",
-      price: 549,
+      id: "MIGHTY ZINGER BURGER",
+      name: "MIGHTY ZINGER BURGER",
+      price: 399,
       image: "/images/burger.jpg",
-      description: "6(Pcs)",
     },
     {
-      id: "CHILLI WINGS",
-      name: "CHILLI WINGS",
-      price: 479,
+      id: " IALAPE NO BURGER ",
+      name: "IALAPE NO BURGER",
+      price: 589,
       image: "/images/burger.jpg",
-      description: "6(Pcs)",
     },
     {
-      id: "BUFFALO WINGS",
-      name: "BUFFALO WINGS",
-      price: 489,
+      id: "MUSHROOM BURGER ",
+      name: "MUSHROOM BURGER",
+      price: 499,
       image: "/images/burger.jpg",
-      description: "6(Pcs)",
     },
+    ,
   ];
 
   const [quantities, setQuantities] = useState({});
@@ -88,10 +77,10 @@ const ZalmiMealDealCard = () => {
   return (
     <>
       <h1 className="text-center text-4xl sm:text-5xl font-extrabold text-orange-700 mb-8 drop-shadow-md">
-        🍔 Zalmi Starters
+        🍔 Zalmi Burgers
       </h1>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 p-6 bg-gradient-to-br from-yellow-100 via-orange-100 to-red-100">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-2 lg:gap-18 p-6 bg-gradient-to-br from-yellow-100 via-orange-100 to-red-100">
         {mealDeals.map((item) => {
           const quantity = quantities[item.id] || 0;
 
@@ -100,7 +89,10 @@ const ZalmiMealDealCard = () => {
               key={item.id}
               className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-1 p-4 space-y-4 border border-orange-200"
             >
-              <div className="w-full relative rounded-xl overflow-hidden" style={{ height: "200px" }}>
+              <div
+                className="w-full relative rounded-xl overflow-hidden"
+                style={{ height: "200px" }}
+              >
                 <Image
                   src={item.image}
                   alt={item.name}
@@ -111,10 +103,11 @@ const ZalmiMealDealCard = () => {
               </div>
 
               <h2 className="text-lg font-bold text-gray-800">{item.name}</h2>
-              <p className="text-sm text-gray-600">{item.description}</p>
 
               <div className="flex items-center justify-between">
-                <div className="text-red-600 text-xl font-bold">Rs. {item.price}</div>
+                <div className="text-red-600 text-xl font-bold">
+                  Rs. {item.price}
+                </div>
                 <div className="bg-orange-100 text-orange-600 text-xs px-2 py-1 rounded-full">
                   Starting Price
                 </div>
@@ -127,7 +120,9 @@ const ZalmiMealDealCard = () => {
                 >
                   -
                 </button>
-                <span className="text-xl font-bold text-gray-800">{quantity}</span>
+                <span className="text-xl font-bold text-gray-800">
+                  {quantity}
+                </span>
                 <button
                   onClick={() => handleQuantityChange(item.id, 1)}
                   className="bg-orange-200 hover:bg-orange-300 text-orange-800 font-bold px-4 py-2 rounded-full transition"

@@ -8,59 +8,129 @@ const ZalmiMealDealCard = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.items);
 
-  const mealDeals = [
-    {
-      id: "BBQ WINGS",
-      name: "BBQ WINGS",
-      price: 449,
-      image: "/images/burger.jpg",
-      description: "6(Pcs)",
+ const mealDeals = [
+  {
+    id: "CHICKEN HANDI",
+    name: "Chicken Handi",
+    image: "/images/handi.jpg",
+    prices: {
+      half: 1049,
+      full: 1899,
     },
-    {
-      id: "FRIEND WINGS",
-      name: "FRIEND WINGS",
-      price:399,
-      image: "/images/burger.jpg",
-       description: "6(Pcs)",
+  },
+  {
+    id: "CHICKEN WHITE HANDI",
+    name: "Chicken White Handi",
+    image: "/images/handi.jpg",
+    prices: {
+      half: 1099,
+      full: 1949,
     },
-    {
-      id: "CHICKEN NUGGETS",
-      name: "CHICKEN NUGGETS",
-      price: 349,
-      image: "/images/burger.jpg",
-  description: "6(Pcs)",
+  },
+  {
+    id: "CHICKEN ACHARI HANDI",
+    name: "Chicken Achari Handi",
+    image: "/images/handi.jpg",
+    prices: {
+      half: 1049,
+      full: 1899,
     },
-    {
-      id: "CHICKEN NUGGETS2",
-      name: "CHICKEN NUGGETS",
-      price: 649,
-      image: "/images/burger.jpg",
-        description: "12(Pcs)",
+  },
+  {
+    id: "KABAB MASALA HANDI",
+    name: "Kabab Masala Handi",
+    image: "/images/handi.jpg",
+    prices: {
+      half: 949,
+      full: 1799,
     },
-    {
-      id: "HONEY WINGS",
-      name: "HONEY WINGS",
-      price: 549,
-      image: "/images/burger.jpg",
-      description: "6(Pcs)",
+  },
+  {
+    id: "CHICKEN HARI MIRCH HANDI",
+    name: "Chicken Hari-Mirch Handi",
+    image: "/images/handi.jpg",
+    prices: {
+      half: 949,
+      full: 1799,
     },
-    {
-      id: "CHILLI WINGS",
-      name: "CHILLI WINGS",
-      price: 479,
-      image: "/images/burger.jpg",
-      description: "6(Pcs)",
+  },
+  {
+    id: "CHICKEN GINGER HANDI",
+    name: "Chicken Ginger Handi",
+    image: "/images/handi.jpg",
+    prices: {
+      half: 949,
+      full: 1799,
     },
-    {
-      id: "BUFFALO WINGS",
-      name: "BUFFALO WINGS",
-      price: 489,
-      image: "/images/burger.jpg",
-      description: "6(Pcs)",
+  },
+  {
+    id: "CHICKEN BLACK PEPPER HANDI",
+    name: "Chicken Black Pepper Handi",
+    image: "/images/handi.jpg",
+    prices: {
+      half: 1049,
+      full: 1949,
     },
-  ];
+  },
+  {
+    id: "ANCIENT SIP SPECIAL KARAHI",
+    name: "Ancient Sip Special Karahi",
+    image: "/images/handi.jpg",
+    prices: {
+      half: 1049,
+      full: 2199,
+    },
+  },
+  {
+    id: "CHICKEN KARAHI",
+    name: "Chicken Karahi",
+    image: "/images/handi.jpg",
+    prices: {
+      half: 949,
+      full: 1799,
+    },
+  },
+  {
+    id: "CHICKEN HARYALI",
+    name: "Chicken Haryali",
+    image: "/images/handi.jpg",
+    prices: {
+      half: 949,
+      full: 1699,
+    },
+  },
+  {
+    id: "CHICKEN WHITE KARAHI",
+    name: "Chicken White Karahi",
+    image: "/images/handi.jpg",
+    prices: {
+      half: 1099,
+      full: 1949,
+    },
+  },
+  {
+    id: "CHICKEN NAMKEEN KARAHI",
+    name: "Chicken Namkeen Karahi",
+    image: "/images/handi.jpg",
+    prices: {
+      half: 949,
+      full: 1799,
+    },
+  },
+  {
+    id: "CHICKEN ACHARI KARAHI",
+    name: "Chicken Achari Karahi",
+    image: "/images/handi.jpg",
+    prices: {
+      half: 949,
+      full: 1649,
+    },
+  },
+];
+
 
   const [quantities, setQuantities] = useState({});
+  const [selectedCategories, setSelectedCategories] = useState({});
 
   const handleQuantityChange = (id, change) => {
     setQuantities((prev) => {
@@ -72,13 +142,26 @@ const ZalmiMealDealCard = () => {
     });
   };
 
+  const handleCategoryChange = (id, category) => {
+    setSelectedCategories((prev) => ({
+      ...prev,
+      [id]: category,
+    }));
+  };
+
   const handleAddToCart = (item) => {
     const quantity = quantities[item.id] || 0;
+    const category = selectedCategories[item.id] || "chicken";
+    const price = item.prices[category];
+
     if (quantity === 0) {
       alert("Please select at least 1 item before adding to cart.");
       return;
     }
-    dispatch(addToCart({ ...item, quantity }));
+
+    dispatch(
+      addToCart({ ...item, quantity, selectedCategory: category, price })
+    );
   };
 
   const handleRemoveFromCart = (itemId) => {
@@ -88,19 +171,24 @@ const ZalmiMealDealCard = () => {
   return (
     <>
       <h1 className="text-center text-4xl sm:text-5xl font-extrabold text-orange-700 mb-8 drop-shadow-md">
-        🍔 Zalmi Starters
+        🍔 CHICKEN KARAHI
       </h1>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 p-6 bg-gradient-to-br from-yellow-100 via-orange-100 to-red-100">
         {mealDeals.map((item) => {
           const quantity = quantities[item.id] || 0;
+          const category = selectedCategories[item.id] || "chicken";
+          const price = item.prices[category];
 
           return (
             <div
               key={item.id}
               className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-1 p-4 space-y-4 border border-orange-200"
             >
-              <div className="w-full relative rounded-xl overflow-hidden" style={{ height: "200px" }}>
+              <div
+                className="w-full relative rounded-xl overflow-hidden"
+                style={{ height: "200px" }}
+              >
                 <Image
                   src={item.image}
                   alt={item.name}
@@ -111,15 +199,28 @@ const ZalmiMealDealCard = () => {
               </div>
 
               <h2 className="text-lg font-bold text-gray-800">{item.name}</h2>
-              <p className="text-sm text-gray-600">{item.description}</p>
 
-              <div className="flex items-center justify-between">
-                <div className="text-red-600 text-xl font-bold">Rs. {item.price}</div>
+              {/* Category Selector */}
+              <select
+                value={category}
+                onChange={(e) => handleCategoryChange(item.id, e.target.value)}
+                className="w-full px-2 py-1 border rounded bg-white text-gray-700"
+              >
+                <option value="half">Half</option>
+                <option value="full">Full</option>
+              </select>
+
+              {/* Price */}
+              <div className="flex items-center justify-between mt-2">
+                <div className="text-red-600 text-xl font-bold">
+                  Rs. {price}
+                </div>
                 <div className="bg-orange-100 text-orange-600 text-xs px-2 py-1 rounded-full">
                   Starting Price
                 </div>
               </div>
 
+              {/* Quantity Buttons */}
               <div className="flex items-center justify-center space-x-4">
                 <button
                   onClick={() => handleQuantityChange(item.id, -1)}
@@ -127,7 +228,9 @@ const ZalmiMealDealCard = () => {
                 >
                   -
                 </button>
-                <span className="text-xl font-bold text-gray-800">{quantity}</span>
+                <span className="text-xl font-bold text-gray-800">
+                  {quantity}
+                </span>
                 <button
                   onClick={() => handleQuantityChange(item.id, 1)}
                   className="bg-orange-200 hover:bg-orange-300 text-orange-800 font-bold px-4 py-2 rounded-full transition"
@@ -136,6 +239,7 @@ const ZalmiMealDealCard = () => {
                 </button>
               </div>
 
+              {/* Add/Remove Buttons */}
               <button
                 onClick={() => handleAddToCart(item)}
                 className="w-full bg-gradient-to-r from-green-400 to-green-600 hover:from-green-500 hover:to-green-700 text-white font-semibold py-2 px-4 rounded-lg transition"

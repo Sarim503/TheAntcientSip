@@ -1,6 +1,6 @@
 "use client"; 
 import { useSelector, useDispatch } from "react-redux";
-import { selectCartItems, resetCart } from "../../store/cartSlice";  // Import resetCart action
+import { selectCartItems, resetCart } from "../../store/cartSlice"; 
 import Link from "next/link";
 import { useAuth } from "../../firebase/AuthContext";
 import { useRouter } from 'next/navigation';
@@ -9,8 +9,8 @@ import { saveOrder } from "../../firebase/orderService";
 
 const Cart = () => {
   const router = useRouter();
-  const { user } = useAuth();  // User info
-  const dispatch = useDispatch();  // Initialize dispatch
+  const { user } = useAuth();  
+  const dispatch = useDispatch();  
   const [isMounted, setIsMounted] = useState(false);
 
   const cartItems = useSelector(selectCartItems);
@@ -21,7 +21,7 @@ const Cart = () => {
 
   const handleCheckout = async () => {
     if (!user) {
-      router.push('/login');  // Redirect to login if not logged in
+      router.push('/login');  
     } else {
       const orderDetails = {
         items: cartItems,
@@ -29,12 +29,12 @@ const Cart = () => {
       };
 
       try {
-        await saveOrder(orderDetails);  // Save order to Firebase
+        await saveOrder(orderDetails);  
         console.log("Order saved successfully");
 
-        dispatch(resetCart());  // Reset the cart after successful order
+        dispatch(resetCart()); 
 
-        router.push('/thank-you');  // Redirect to Thank You page
+        router.push('/thank-you');  
       } catch (error) {
         console.error("Error saving order: ", error);
       }
@@ -49,7 +49,7 @@ const Cart = () => {
     <div className="p-4">
       <h1 className="text-2xl font-bold mb-4">Your Cart</h1>
 
-      {user && <p className="text-xl">Hello, {user.displayName}</p>} {/* Show user name if logged in */}
+      {user && <p className="text-xl">Hello, {user.displayName}</p>} 
       
       {cartItems.length === 0 ? (
         <p>

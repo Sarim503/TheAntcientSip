@@ -15,11 +15,11 @@ import { Card, CardContent } from "@/components/ui/card"
 const CarouselMenu = () => {
   const menuItems = [
     { name: "STARTERS", image: "/images/burger.jpg", link: "/staters" },
-    { name: "SOMEWHAT LOCAL", image: "/images/burger.jpg", link: "/staters" },
-    { name: "SOMEWHAT SOOPER", image: "/images/burger.jpg", link: "/staters" },
-    { name: "CHEEZY TREATS", image: "/images/burger.jpg", link: "/staters" },
-    { name: "PASTA", image: "/images/burger.jpg", link: "/staters" },
-    { name: "DRINKS", image: "/images/burger.jpg", link: "/staters" },
+    { name: "BURGERS", image: "/images/burger.jpg", link: "/burger" },
+    { name: "BBQ", image: "/images/burger.jpg", link: "/bbq" },
+    { name: "STEAKS", image: "/images/burger.jpg", link: "/steaks" },
+    { name: "CHICKEN HANDI", image: "/images/burger.jpg", link: "/chicken-handi" },
+    { name: "CHICKEN KARAHI", image: "/images/burger.jpg", link: "/chicken-karahi" },
     { name: "PASTA", image: "/images/burger.jpg", link: "/staters" },
     { name: "DRINKS", image: "/images/burger.jpg", link: "/staters" },
     { name: "PASTA", image: "/images/burger.jpg", link: "/staters" },

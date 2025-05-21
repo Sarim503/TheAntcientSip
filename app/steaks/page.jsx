@@ -10,57 +10,99 @@ const ZalmiMealDealCard = () => {
 
   const mealDeals = [
     {
-      id: "BBQ WINGS",
-      name: "BBQ WINGS",
-      price: 449,
+      id: "ANCIENT SIP SPECIAL",
+      name: "ANCIENT SIP SPECIAL",
       image: "/images/burger.jpg",
       description: "6(Pcs)",
+      prices: {
+        chicken: 1499 ,
+        beef: 1799 ,
+      },
     },
     {
-      id: "FRIEND WINGS",
-      name: "FRIEND WINGS",
-      price:399,
-      image: "/images/burger.jpg",
-       description: "6(Pcs)",
-    },
-    {
-      id: "CHICKEN NUGGETS",
-      name: "CHICKEN NUGGETS",
-      price: 349,
-      image: "/images/burger.jpg",
-  description: "6(Pcs)",
-    },
-    {
-      id: "CHICKEN NUGGETS2",
-      name: "CHICKEN NUGGETS",
-      price: 649,
-      image: "/images/burger.jpg",
-        description: "12(Pcs)",
-    },
-    {
-      id: "HONEY WINGS",
-      name: "HONEY WINGS",
-      price: 549,
+      id: " MEXICAN STEAK",
+      name: " MEXICAN STEAK",
       image: "/images/burger.jpg",
       description: "6(Pcs)",
+      prices: {
+        chicken: 1389 ,
+        beef: 1689 ,
+      },
     },
     {
-      id: "CHILLI WINGS",
-      name: "CHILLI WINGS",
-      price: 479,
+      id: " BLACK PEPPER STEAK",
+      name: " BLACK PEPPER STEAK",
       image: "/images/burger.jpg",
       description: "6(Pcs)",
+      prices: {
+        chicken: 1389 ,
+        beef: 1599 ,
+      },
     },
     {
-      id: "BUFFALO WINGS",
-      name: "BUFFALO WINGS",
-      price: 489,
+      id: " MUSHROOM STEAK",
+      name: " MUSHROOM STEAK",
+      image: "/images/burger.jpg",
+      description: "12(Pcs)",
+      prices: {
+        chicken: 1389 ,
+        beef: 1549 ,
+      },
+    },
+    {
+      id: " JALAPENO STEAK ",
+      name: " JALAPENO STEAK ",
       image: "/images/burger.jpg",
       description: "6(Pcs)",
+      prices: {
+        chicken: 1389 ,
+        beef: 1599 ,
+      },
+    },
+    {
+      id: "BBQ STEAK",
+      name: "BBQ STEAK",
+      image: "/images/burger.jpg",
+      description: "6(Pcs)",
+      prices: {
+        chicken: 1349 ,
+        beef: 1599 ,
+      },
+    },
+    {
+      id: " AMERICAN STEAK",
+      name: " AMERICAN STEAK",
+      image: "/images/burger.jpg",
+      description: "6(Pcs)",
+      prices: {
+        chicken: 1349 ,
+        beef: 1599 ,
+      },
+    },
+    {
+      id: "  HAWAIIAN STEAK",
+      name: " HAWAIIAN STEAK",
+      image: "/images/burger.jpg",
+      description: "6(Pcs)",
+      prices: {
+        chicken: 1389 ,
+        beef: 1599 ,
+      },
+    },
+    {
+      id: "  TARAGON STEAK ",
+      name: " TARAGON STEAK ",
+      image: "/images/burger.jpg",
+      description: "6(Pcs)",
+      prices: {
+        chicken: 1389 ,
+        beef: 1599 ,
+      },
     },
   ];
 
   const [quantities, setQuantities] = useState({});
+  const [selectedCategories, setSelectedCategories] = useState({});
 
   const handleQuantityChange = (id, change) => {
     setQuantities((prev) => {
@@ -72,13 +114,24 @@ const ZalmiMealDealCard = () => {
     });
   };
 
+  const handleCategoryChange = (id, category) => {
+    setSelectedCategories((prev) => ({
+      ...prev,
+      [id]: category,
+    }));
+  };
+
   const handleAddToCart = (item) => {
     const quantity = quantities[item.id] || 0;
+    const category = selectedCategories[item.id] || "chicken";
+    const price = item.prices[category];
+
     if (quantity === 0) {
       alert("Please select at least 1 item before adding to cart.");
       return;
     }
-    dispatch(addToCart({ ...item, quantity }));
+
+    dispatch(addToCart({ ...item, quantity, selectedCategory: category, price }));
   };
 
   const handleRemoveFromCart = (itemId) => {
@@ -88,12 +141,14 @@ const ZalmiMealDealCard = () => {
   return (
     <>
       <h1 className="text-center text-4xl sm:text-5xl font-extrabold text-orange-700 mb-8 drop-shadow-md">
-        🍔 Zalmi Starters
+        🍔 Zalmi STEAKS 
       </h1>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 p-6 bg-gradient-to-br from-yellow-100 via-orange-100 to-red-100">
         {mealDeals.map((item) => {
           const quantity = quantities[item.id] || 0;
+          const category = selectedCategories[item.id] || "chicken";
+          const price = item.prices[category];
 
           return (
             <div
@@ -111,15 +166,27 @@ const ZalmiMealDealCard = () => {
               </div>
 
               <h2 className="text-lg font-bold text-gray-800">{item.name}</h2>
-              <p className="text-sm text-gray-600">{item.description}</p>
+       
 
-              <div className="flex items-center justify-between">
-                <div className="text-red-600 text-xl font-bold">Rs. {item.price}</div>
+              {/* Category Selector */}
+              <select
+                value={category}
+                onChange={(e) => handleCategoryChange(item.id, e.target.value)}
+                className="w-full px-2 py-1 border rounded bg-white text-gray-700"
+              >
+                <option value="chicken">Chicken</option>
+                <option value="beef">Beef</option>
+              </select>
+
+              {/* Price */}
+              <div className="flex items-center justify-between mt-2">
+                <div className="text-red-600 text-xl font-bold">Rs. {price}</div>
                 <div className="bg-orange-100 text-orange-600 text-xs px-2 py-1 rounded-full">
                   Starting Price
                 </div>
               </div>
 
+              {/* Quantity Buttons */}
               <div className="flex items-center justify-center space-x-4">
                 <button
                   onClick={() => handleQuantityChange(item.id, -1)}
@@ -136,6 +203,7 @@ const ZalmiMealDealCard = () => {
                 </button>
               </div>
 
+              {/* Add/Remove Buttons */}
               <button
                 onClick={() => handleAddToCart(item)}
                 className="w-full bg-gradient-to-r from-green-400 to-green-600 hover:from-green-500 hover:to-green-700 text-white font-semibold py-2 px-4 rounded-lg transition"

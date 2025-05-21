@@ -73,11 +73,11 @@ export default function Navbar({ user }) {
           <LogIn className="inline-block mr-2 w-4 h-4" />
           Login
         </Link>
-      <ul>
+      {/* <ul>
   {user && user.displayName ? (
     <li>Welcome, {user.displayName}</li>
   ) : null}
-</ul>
+</ul> */}
 
       </div>
     </div>
