@@ -1,7 +1,7 @@
 import React from 'react'
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button";
-import { UtensilsCrossed } from "lucide-react";
+import { Router, UtensilsCrossed } from "lucide-react";
 
 const Blogs = () => {
   const menuItems2 = [
@@ -31,7 +31,7 @@ const Blogs = () => {
  
             <h2 className="text-2xl font-bold text-gray-800">Blogs</h2>
           </div>
-          <Button variant="outline">VIEW ALL</Button>
+          <Button variant="outline" >VIEW ALL</Button>
         </div>
 
         {/* Cards */}

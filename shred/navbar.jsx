@@ -33,10 +33,12 @@ export default function Navbar({ user }) {
               <Menu className="w-6 h-6" />
             </button>
           </SheetTrigger>
-          <SheetContent side="left" className="w-64">
+          <SheetContent side="left" className="w-64 p-2">
+           <h1 className="font-semibold text-yellow-700 text-2xl">The Ancient Ship</h1>
+
             <div className="mt-4 flex flex-col gap-4">
               <Link href="/" className="text-lg font-semibold">Home</Link>
-              <Link href="/services" className="text-lg font-semibold">Services</Link>
+              
               <Link href="/blogs" className="text-lg font-semibold">Blogs</Link>
               <Link href="/cart" className="text-lg font-semibold">Cart</Link>
               <Link href="/login" className="text-lg font-semibold">Login</Link>

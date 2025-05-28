@@ -12,7 +12,7 @@ export default function Home() {
     <CarouselMenu />
     <Blogs />
     <SubscribeMenu />
-    <Footerpage />
+
     
   </div>;
 }
