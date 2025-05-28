@@ -4,14 +4,14 @@ import { googleSignIn } from '../../firebase/GoogleLogin';
 import { useAuth } from "../../firebase/AuthContext";
 
 const Login = () => {
-  const { user, login } = useAuth();  // This will get the user object and login method from AuthContext
+  const { user, login } = useAuth(); 
 
   const handleGoogleLogin = async () => {
     try {
-      const result = await googleSignIn();  // Calling googleSignIn from firebase auth
-      const user = result.user;  // Getting user details
+      const result = await googleSignIn();  
+      const user = result.user;  
 
-      login(user);  // Pass user details to AuthContext
+      login(user);  
 
       console.log("User signed in:", user);
     } catch (error) {
@@ -20,7 +20,7 @@ const Login = () => {
   };
 
   if (user) {
-    // If user is logged in, show welcome message and no login button
+ 
     return (
       <div className="max-w-md mx-auto p-4">
         <h2 className="text-center text-2xl">Welcome, {user.displayName}</h2>
@@ -29,7 +29,7 @@ const Login = () => {
     );
   }
 
-  // If user is not logged in, show login button
+
   return (
     <div className="max-w-md mx-auto p-4">
       <h2 className="text-center text-2xl">Login</h2>
