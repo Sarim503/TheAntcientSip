@@ -11,8 +11,10 @@ import {
 import { Button } from "@/components/ui/button";
 import { UtensilsCrossed } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { useRouter } from "next/navigation";
 
 const CarouselMenu = () => {
+    const router = useRouter();
   const menuItems = [
     { name: "STARTERS", image: "/images/burger.jpg", link: "/staters" },
     {
@@ -77,9 +79,9 @@ const CarouselMenu = () => {
           <UtensilsCrossed className="text-red-500 w-6 h-6" />
           <h2 className="text-2xl font-bold text-gray-800">Explore Menu</h2>
         </div>
-        <Button variant="outline" onClick={() => alert("bad ma add kra ga na")}>
-          VIEW ALL
-        </Button>
+       <Button variant="outline" onClick={() => router.push("/viewall")}>
+      VIEW ALL
+    </Button>
       </div>
 
       {/* Carousel */}

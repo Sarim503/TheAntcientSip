@@ -26,19 +26,24 @@ const Footerpage = () => {
           </div>
 
           {/* Newsletter or Socials */}
-          <div className="w-full md:w-auto">
-            <p className="font-semibold mb-2">Subscribe to our newsletter</p>
-            <div className="flex">
-              <input
-                type="email"
-                placeholder="Email address"
-                className="px-3 py-2 rounded-l bg-white text-black outline-none"
-              />
-              <button className="bg-black text-white px-2 py-2 rounded-r hover:bg-gray-800">
-                Subscribe
-              </button>
-            </div>
-          </div>
+        <div className="flex gap-4">
+  <a
+    href="https://facebook.com/YourPage"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="bg-yellow-900 text-white px-4 py-2 rounded-2xl hover:bg-yellow-700"
+  >
+    Follow on Facebook
+  </a>
+  <a
+    href="https://instagram.com/YourPage"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="bg-yellow-900 text-white px-4 py-2 rounded-2xl hover:bg-yellow-700"
+  >
+    Follow on Instagram
+  </a>
+</div>
         </div>
 
         {/* Bottom Line */}
