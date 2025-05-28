@@ -5,15 +5,13 @@ import SubscribeMenu from "@/shred/SubscribeMenu";
 import Footerpage from "@/shred/Footerpage";
 import Xshape from "@/shred/xshape";
 
-
 export default function Home() {
-  return <div className="flex flex-col">
-    <Carsel />
-    <CarouselMenu />
-    <Blogs />
-    <SubscribeMenu />
+  return (
+    <div className="flex flex-col">
+      <Carsel />
+      <CarouselMenu />
 
-    
-  </div>;
+      <SubscribeMenu />
+    </div>
+  );
 }
-  

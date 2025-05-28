@@ -1,29 +1,37 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
+import { auth } from "../firebase/config"; // <-- make sure ye sahi path ho
+import { signOut } from "firebase/auth";
 
 const AuthContext = createContext();
 
-export const useAuth = () => {
-  return useContext(AuthContext);
-};
+export const useAuth = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }) => {
-  // Initializing user from localStorage (if available)
-  const [user, setUser] = useState(() => {
-    // Fetch user data from localStorage if available
-    const storedUser = localStorage.getItem("user");
-    return storedUser ? JSON.parse(storedUser) : null;
-  });
+  const [user, setUser] = useState(null);
 
-  // Login function: Store user data in state and localStorage
+  // Firebase auth state listener
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((currentUser) => {
+      if (currentUser) {
+        setUser(currentUser);
+        localStorage.setItem("user", JSON.stringify(currentUser)); // optional
+      } else {
+        setUser(null);
+        localStorage.removeItem("user"); // optional
+      }
+    });
+    return () => unsubscribe();
+  }, []);
+
   const login = (userData) => {
     setUser(userData);
-    localStorage.setItem("user", JSON.stringify(userData));  // Save to localStorage
+    localStorage.setItem("user", JSON.stringify(userData));
   };
 
-  // Logout function: Clear user data from state and localStorage
-  const logout = () => {
+  const logout = async () => {
+    await signOut(auth);
     setUser(null);
-    localStorage.removeItem("user");  // Remove from localStorage
+    localStorage.removeItem("user");
   };
 
   return (
