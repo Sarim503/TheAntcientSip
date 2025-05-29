@@ -20,8 +20,8 @@ const Footerpage = () => {
               About Us
             </a>
 
-            <a href="#" className="hover:underline">
-              Contact
+            <a href="/contact-us" className="hover:underline">
+              Contact Us
             </a>
           </div>
 
