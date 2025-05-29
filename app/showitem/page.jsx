@@ -1,3 +1,4 @@
+"use client"
 import { useEffect, useState } from "react";
 import { saveOrder, fetchUserOrders } from "../../firebase/orderService"; // Adjust path accordingly
 
