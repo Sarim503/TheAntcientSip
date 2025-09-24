@@ -1,28 +1,28 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 
 const SubscribeMenu = () => {
-
-
-
-
   return (
-    <div className="w-full flex flex-col shadow-2xl md:flex-row items-center justify-start  p-5 md:p-20 relative overflow-hidden bg-[url('/images/bgsub.jpg')]  bg-cover bg-no-repeat bg-top
-">
+    <div
+      className="w-full flex flex-col md:flex-row items-center md:items-start justify-between 
+      p-6 md:p-16 gap-6 shadow-2xl relative overflow-hidden 
+      bg-[url('/images/bgsub.jpg')] bg-cover bg-no-repeat bg-top"
+    >
       {/* Left Side */}
-      <div className="max-w-md z-10">
-        <h2 className="text-2xl md:text-3xl font-bold text-orange-950 mb-2">
+      <div className="w-full md:w-1/2 z-10 text-center md:text-left">
+        <h2 className="text-2xl md:text-3xl font-bold text-orange-950 mb-3">
           Special Offers & <br /> News
         </h2>
-      <p className="text-gray-200 font-semibold mb-6">
-  Follow us on Facebook and Instagram for news, promotions and more!
-</p>
-<div className="flex gap-4">
+        <p className="text-black font-semibold mb-6 text-sm md:text-base ">
+          Follow us on Facebook and Instagram for news, promotions and more!
+        </p>
+      <div className="flex flex-wrap justify-center md:justify-start gap-4">
   <a
     href="https://facebook.com/YourPage"
     target="_blank"
     rel="noopener noreferrer"
-    className="bg-blue-600 text-white px-4 py-2 rounded-2xl hover:bg-blue-700 "
+    className="bg-yellow-500 text-black font-semibold px-4 py-2 rounded-2xl 
+               hover:bg-yellow-600 transition"
   >
     Follow on Facebook
   </a>
@@ -30,17 +30,14 @@ const SubscribeMenu = () => {
     href="https://instagram.com/YourPage"
     target="_blank"
     rel="noopener noreferrer"
-    className="bg-pink-500 text-white px-4 py-2 rounded-2xl hover:bg-pink-600"
+    className="bg-yellow-500 text-black font-semibold px-4 py-2 rounded-2xl 
+               hover:bg-yellow-600 transition"
   >
     Follow on Instagram
   </a>
 </div>
 
-     
-      
       </div>
-
-    
     </div>
   );
 };
