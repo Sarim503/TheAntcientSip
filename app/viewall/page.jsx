@@ -3,20 +3,20 @@ import React, { useState } from "react";
 import Link from "next/link";
 
 const menuItems = [
-  { name: "STARTERS", image: "/images/burger.jpg", link: "/starters", category: "Starters" },
-  { name: "PREMIUM PIZZAS", image: "/images/burger.jpg", link: "/premiumpizzas", category: "Premium Pizzas" },
-  { name: "BURGERS", image: "/images/burger.jpg", link: "/burger", category: "Burgers" },
-  { name: "BBQ", image: "/images/burger.jpg", link: "/bbq", category: "BBQ" },
-  { name: "STEAKS", image: "/images/burger.jpg", link: "/steaks", category: "Steaks" },
-  { name: "CHICKEN HANDI", image: "/images/burger.jpg", link: "/chicken-handi", category: "Chicken" },
-  { name: "CHICKEN KARAHI", image: "/images/burger.jpg", link: "/chicken-karahi", category: "Chicken" },
-  { name: "SHAWARMA", image: "/images/burger.jpg", link: "/shawarma", category: "Shawarma" },
-  { name: "ROCK & ROLL", image: "/images/burger.jpg", link: "/rock-and-roll", category: "Rock & Roll" },
-  { name: "FLAVOUR OF THE WORLD", image: "/images/burger.jpg", link: "/flavouroftheworld", category: "World Cuisine" },
-  { name: "SURF & TURF", image: "/images/burger.jpg", link: "/surf-and-turf", category: "Surf & Turf" },
-  { name: "DESSERTS", image: "/images/burger.jpg", link: "/desserts", category: "Desserts" },
-  { name: "CHOICE OF RICE", image: "/images/burger.jpg", link: "/choice-of-rice", category: "Rice" },
-  { name: "SHAKE", image: "/images/burger.jpg", link: "/shake", category: "Drinks" },
+  { name: "STARTERS", image: "/images/menu/starters.svg", link: "/staters", category: "Starters" },
+  { name: "PREMIUM PIZZAS", image: "/images/menu/pizza.svg", link: "/premiumpizzas", category: "Premium Pizzas" },
+  { name: "BURGERS", image: "/images/menu/burger.svg", link: "/burger", category: "Burgers" },
+  { name: "BBQ", image: "/images/menu/bbq.svg", link: "/bbq", category: "BBQ" },
+  { name: "STEAKS", image: "/images/menu/steak.svg", link: "/steaks", category: "Steaks" },
+  { name: "CHICKEN HANDI", image: "/images/menu/chicken.svg", link: "/chicken-handi", category: "Chicken" },
+  { name: "CHICKEN KARAHI", image: "/images/menu/chicken.svg", link: "/chicken-karahi", category: "Chicken" },
+  { name: "SHAWARMA", image: "/images/menu/shawarma.svg", link: "/shawarma", category: "Shawarma" },
+  { name: "ROCK & ROLL", image: "/images/menu/world.svg", link: "/roch&roll", category: "Rock & Roll" },
+  { name: "FLAVOUR OF THE WORLD", image: "/images/menu/world.svg", link: "/flavouroftheworld", category: "World Cuisine" },
+  { name: "SURF & TURF", image: "/images/menu/surf-turf.svg", link: "/surf&turf", category: "Surf & Turf" },
+  { name: "DESSERTS", image: "/images/menu/dessert.svg", link: "/desserts", category: "Desserts" },
+  { name: "CHOICE OF RICE", image: "/images/menu/rice.svg", link: "/ChoiceofRice", category: "Rice" },
+  { name: "SHAKE", image: "/images/menu/shakes.svg", link: "/shake", category: "Drinks" },
 ];
 
 const categories = ["All", ...new Set(menuItems.map((item) => item.category))];
@@ -58,11 +58,13 @@ export default function MenuPage() {
             href={item.link}
             className="bg-white border rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300"
           >
-            <img
-              src={item.image}
-              alt={item.name}
-              className="w-full h-48 object-cover"
-            />
+            <div className="w-full h-48 flex items-center justify-center bg-gray-50">
+              <img
+                src={item.image}
+                alt={item.name}
+                className="w-28 h-28 object-contain"
+              />
+            </div>
             <div className="p-4">
               <h3 className="text-lg font-semibold">{item.name}</h3>
               <p className="text-sm text-gray-500">{item.category}</p>

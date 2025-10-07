@@ -16,41 +16,20 @@ import { useRouter } from "next/navigation";
 const CarouselMenu = () => {
     const router = useRouter();
   const menuItems = [
-    { name: "STARTERS", image: "/images/burger.jpg", link: "/staters" },
-    {
-      name: "PREMIUM PIZZAS",
-      image: "/images/burger.jpg",
-      link: "/premiumpizzas",
-    },
-    { name: "BURGERS", image: "/images/burger.jpg", link: "/burger" },
-    { name: "BBQ", image: "/images/burger.jpg", link: "/bbq" },
-    { name: "STEAKS", image: "/images/burger.jpg", link: "/steaks" },
-    {
-      name: "CHICKEN HANDI",
-      image: "/images/burger.jpg",
-      link: "/chicken-handi",
-    },
-    {
-      name: "CHICKEN KARAHI",
-      image: "/images/burger.jpg",
-      link: "/chicken-karahi",
-    },
-    { name: "SHAWARMA", image: "/images/burger.jpg", link: "/shawarma" },
-    { name: "ROCK & ROLL", image: "/images/burger.jpg", link: "/roch&roll" },
-    {
-      name: "FLAVOUR OF THE WORLD",
-      image: "/images/burger.jpg",
-      link: "/flavouroftheworld",
-    },
-    { name: "SURF & TURF", image: "/images/burger.jpg", link: "/surf&turf" },
-    { name: "DESSERTS", image: "/images/burger.jpg", link: "/desserts" },
-
-    {
-      name: "CHOICE OF RICE",
-      image: "/images/burger.jpg",
-      link: "/ChoiceofRice",
-    },
-    { name: "SHAKE", image: "/images/burger.jpg", link: "/shake" },
+    { name: "STARTERS", image: "/images/menu/starters.svg", link: "/staters" },
+    { name: "PREMIUM PIZZAS", image: "/images/menu/pizza.svg", link: "/premiumpizzas" },
+    { name: "BURGERS", image: "/images/menu/burger.svg", link: "/burger" },
+    { name: "BBQ", image: "/images/menu/bbq.svg", link: "/bbq" },
+    { name: "STEAKS", image: "/images/menu/steak.svg", link: "/steaks" },
+    { name: "CHICKEN HANDI", image: "/images/menu/chicken.svg", link: "/chicken-handi" },
+    { name: "CHICKEN KARAHI", image: "/images/menu/chicken.svg", link: "/chicken-karahi" },
+    { name: "SHAWARMA", image: "/images/menu/shawarma.svg", link: "/shawarma" },
+    { name: "ROCK & ROLL", image: "/images/menu/world.svg", link: "/roch&roll" },
+    { name: "FLAVOUR OF THE WORLD", image: "/images/menu/world.svg", link: "/flavouroftheworld" },
+    { name: "SURF & TURF", image: "/images/menu/surf-turf.svg", link: "/surf&turf" },
+    { name: "DESSERTS", image: "/images/menu/dessert.svg", link: "/desserts" },
+    { name: "CHOICE OF RICE", image: "/images/menu/rice.svg", link: "/ChoiceofRice" },
+    { name: "SHAKE", image: "/images/menu/shakes.svg", link: "/shake" },
   ];
 
   const menuItems2 = [
@@ -100,7 +79,7 @@ const CarouselMenu = () => {
                     <img
                       src={item.image}
                       alt={item.name}
-                      className="w-24 h-24 md:w-32 md:h-32 object-cover mb-4 rounded-full"
+                      className="w-24 h-24 md:w-32 md:h-32 object-contain p-2 mb-4 rounded-full bg-white"
                     />
                     <h3 className="font-semibold text-sm">{item.name}</h3>
                   </div>
