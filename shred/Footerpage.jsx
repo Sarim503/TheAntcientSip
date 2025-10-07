@@ -7,8 +7,8 @@ const Footerpage = () => {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-10">
           {/* Logo / Title */}
           <div>
-            <h2 className="text-2xl font-bold">CHEEZY</h2>
-            <p className="mt-2 text-sm">Let’s talk cheesy! 🍕</p>
+            <h2 className="text-2xl font-bold">The Ancient Ship</h2>
+            <p className="mt-2 text-sm">Let’s talk tasty! 🍽️</p>
           </div>
 
           {/* Navigation Links */}

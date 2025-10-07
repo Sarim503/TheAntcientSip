@@ -45,6 +45,13 @@ export default function Navbar({ user }) {
                 Home
               </Link>
 
+            <Link
+              href="/viewall"
+              className="text-lg font-semibold text-gray-800 hover:text-blue-600 transition-colors"
+            >
+              Menu
+            </Link>
+
               <Link
                 href="/cart"
                 className="text-lg font-semibold text-gray-800 hover:text-blue-600 transition-colors"
