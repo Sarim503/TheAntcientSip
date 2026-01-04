@@ -72,16 +72,20 @@ const CarouselMenu = () => {
   ];
 
   return (
-    <div className="w-full max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+    <div className="w-full max-w-7xl mx-auto py-6 md:py-8 px-4 sm:px-6 lg:px-8">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
-        <div className="flex items-center gap-3">
-          <UtensilsCrossed className="text-red-500 w-6 h-6" />
-          <h2 className="text-2xl font-bold text-gray-800">Explore Menu</h2>
+      <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-4 md:mb-6">
+        <div className="flex items-center gap-2 md:gap-3">
+          <UtensilsCrossed className="text-red-500 w-5 h-5 md:w-6 md:h-6" />
+          <h2 className="text-xl md:text-2xl font-bold text-gray-800 text-center sm:text-left">Explore Menu</h2>
         </div>
-       <Button variant="outline" onClick={() => router.push("/viewall")}>
-      VIEW ALL
-    </Button>
+        <Button
+          variant="outline"
+          onClick={() => router.push("/viewall")}
+          className="w-full sm:w-auto px-4 py-2 text-sm md:text-base"
+        >
+          VIEW ALL
+        </Button>
       </div>
 
       {/* Carousel */}
@@ -93,16 +97,16 @@ const CarouselMenu = () => {
             return (
               <CarouselItem
                 key={index}
-                className="basis-full sm:basis-1/3 md:basis-1/3 lg:basis-1/3 xl:basis-1/5 px-2"
+                className="basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 xl:basis-1/6 px-1 md:px-2"
               >
                 <Link href={item.link}>
-                  <div className="border border-yellow-400 rounded-xl p-4 hover:shadow-md transition-all h-full flex flex-col items-center justify-center text-center cursor-pointer">
+                  <div className="border border-yellow-400 rounded-lg md:rounded-xl p-3 md:p-4 hover:shadow-md transition-all h-full flex flex-col items-center justify-center text-center cursor-pointer min-h-[120px] md:min-h-[140px]">
                     <img
                       src={item.image}
                       alt={item.name}
-                      className="w-24 h-24 md:w-32 md:h-32 object-cover mb-4 rounded-full"
+                      className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 object-cover mb-2 md:mb-4 rounded-full"
                     />
-                    <h3 className="font-semibold text-sm">{item.name}</h3>
+                    <h3 className="font-semibold text-xs md:text-sm leading-tight px-1">{item.name}</h3>
                   </div>
                 </Link>
               </CarouselItem>
@@ -111,26 +115,26 @@ const CarouselMenu = () => {
         </CarouselContent>
 
         {/* Arrows */}
-        <CarouselPrevious className="left-[-10px] bg-white border shadow-md" />
-        <CarouselNext className="right-[-10px] bg-white border shadow-md " />
+        <CarouselPrevious className="left-0 md:left-[-10px] bg-white border shadow-md w-8 h-8 md:w-10 md:h-10" />
+        <CarouselNext className="right-0 md:right-[-10px] bg-white border shadow-md w-8 h-8 md:w-10 md:h-10" />
       </Carousel>
 
       {/* Cards Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2  lg:grid-cols-3 gap-4 mt-6 items-center px-2 sm:px-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mt-6 md:mt-8 items-center px-0 sm:px-4">
         {menuItems2.map((item) => (
           <Card
             key={item.id}
             className="border-none shadow-none bg-transparent text-start"
           >
-            <div className="overflow-hidden rounded-lg border shadow-md w-full sm:w-72 md:w-80 h-auto mx-auto">
+            <div className="overflow-hidden rounded-lg border shadow-md w-full max-w-xs mx-auto">
               <img
                 src={item.image}
                 alt={item.title}
-                className="w-full object-contain"
+                className="w-full h-32 md:h-40 object-contain"
               />
             </div>
             <CardContent className="bg-transparent px-0 pt-3">
-              <h3 className="text-lg font-semibold text-black">{item.title}</h3>
+              <h3 className="text-base md:text-lg font-semibold text-black text-center">{item.title}</h3>
             </CardContent>
           </Card>
         ))}

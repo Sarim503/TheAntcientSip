@@ -19,19 +19,21 @@ const Carsel = () => {
   ];
 
   return (
-    <div className=" overflow-hidden py-2 ">
-      <Carousel className="w-full" plugins={[plugin.current]}>
+    <div className="w-full overflow-hidden py-2 md:py-4 px-2 md:px-4">
+      <Carousel className="w-full max-w-6xl mx-auto" plugins={[plugin.current]}>
         <CarouselContent>
           {data.map((item) => (
             <CarouselItem
               key={item.id}
-              className="flex justify-center items-center min-w-full"
+              className="flex justify-center items-center min-w-full px-1"
             >
-              <img
-                src={item.img}
-                alt={`slide-${item.id}`}
-                className="w-full h-auto object-contain rounded-xl shadow-lg"
-              />
+              <div className="w-full max-w-4xl mx-auto">
+                <img
+                  src={item.img}
+                  alt={`slide-${item.id}`}
+                  className="w-full h-auto max-h-[200px] sm:max-h-[300px] md:max-h-[400px] lg:max-h-[500px] object-contain rounded-lg md:rounded-xl shadow-lg"
+                />
+              </div>
             </CarouselItem>
           ))}
         </CarouselContent>

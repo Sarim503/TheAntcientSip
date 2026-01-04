@@ -12,7 +12,7 @@ const ZalmiMealDealCard = () => {
     {
       id: "CHICKEN HANDI",
       name: "Chicken Handi",
-      image: "/images/handi.jpg",
+      image: "/images/handi/chicken-handi.svg",
       prices: {
         half: 1049,
         full: 1899,
@@ -21,7 +21,7 @@ const ZalmiMealDealCard = () => {
     {
       id: "CHICKEN WHITE HANDI",
       name: "Chicken White Handi",
-      image: "/images/handi.jpg",
+      image: "/images/handi/chicken-white-handi.svg",
       prices: {
         half: 1099,
         full: 1949,
@@ -30,7 +30,7 @@ const ZalmiMealDealCard = () => {
     {
       id: "CHICKEN ACHARI HANDI",
       name: "Chicken Achari Handi",
-      image: "/images/handi.jpg",
+      image: "/images/handi/chicken-achari-handi.svg",
       prices: {
         half: 1049,
         full: 1899,
@@ -39,7 +39,7 @@ const ZalmiMealDealCard = () => {
     {
       id: "KABAB MASALA HANDI",
       name: "Kabab Masala Handi",
-      image: "/images/handi.jpg",
+      image: "/images/handi/kabab-masala-handi.svg",
       prices: {
         half: 949,
         full: 1799,
@@ -48,7 +48,7 @@ const ZalmiMealDealCard = () => {
     {
       id: "CHICKEN HARI MIRCH HANDI",
       name: "Chicken Hari-Mirch Handi",
-      image: "/images/handi.jpg",
+      image: "/images/handi/generic-handi.svg",
       prices: {
         half: 949,
         full: 1799,
@@ -57,7 +57,7 @@ const ZalmiMealDealCard = () => {
     {
       id: "CHICKEN GINGER HANDI",
       name: "Chicken Ginger Handi",
-      image: "/images/handi.jpg",
+      image: "/images/handi/generic-handi.svg",
       prices: {
         half: 949,
         full: 1799,
@@ -66,7 +66,7 @@ const ZalmiMealDealCard = () => {
     {
       id: "CHICKEN BLACK PEPPER HANDI",
       name: "Chicken Black Pepper Handi",
-      image: "/images/handi.jpg",
+      image: "/images/handi/generic-handi.svg",
       prices: {
         half: 1049,
         full: 1949,
