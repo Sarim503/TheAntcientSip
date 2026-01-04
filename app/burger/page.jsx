@@ -75,8 +75,8 @@ const ZalmiMealDealCard = () => {
 
   return (
     <>
-      <h1 className="text-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-orange-700 mb-6 md:mb-8 drop-shadow-md px-4">
-        🍔 Zalmi Burgers
+      <h1 className="text-center text-4xl sm:text-5xl font-extrabold text-orange-700 mb-8 drop-shadow-md">
+        🍔 Burgers
       </h1>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6 lg:gap-8 p-4 md:p-6 bg-gradient-to-br from-yellow-100 via-orange-100 to-red-100 min-h-screen">

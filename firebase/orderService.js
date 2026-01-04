@@ -1,5 +1,5 @@
 import { getAuth } from "firebase/auth";
-import { collection, addDoc, Timestamp } from "firebase/firestore";
+import { collection, addDoc, Timestamp, getDocs, query, where, orderBy } from "firebase/firestore";
 import { db } from "./config";
 
 export const saveOrder = async (orderDetails) => {
@@ -34,5 +34,25 @@ export const saveOrder = async (orderDetails) => {
 
   } catch (e) {
     console.error("Error adding order or posting to sheet:", e);
+  }
+};
+
+export const fetchUserOrders = async () => {
+  try {
+    const auth = getAuth();
+    const user = auth.currentUser;
+    if (!user) return [];
+
+    const ordersQuery = query(
+      collection(db, "orders"),
+      where("userId", "==", user.uid),
+      orderBy("date", "desc")
+    );
+
+    const snapshot = await getDocs(ordersQuery);
+    return snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+  } catch (e) {
+    console.error("Error fetching user orders:", e);
+    return [];
   }
 };
